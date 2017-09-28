@@ -66,7 +66,20 @@ class FSM {
      * @returns {Array}
      */
     getStates(event) {
-       
+       this.arrStates = [];
+        if (event != undefined) {
+            for (var key in this.config.states) { 
+                if (this.config.states[key].transitions.hasOwnProperty(event)) { 
+                    this.arrStates.push(key); 
+                }
+            }
+        }
+        else { 
+            for (var key in this.config.states) {                 
+                    this.arrStates.push(key); 
+                }
+        }
+        return this.arrStates;
     }
 
     /**
